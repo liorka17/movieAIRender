@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="he">
+<%- include('partials/head') %>
+
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="recommendation-container">
+        <h1>🎬 המלצות מותאמות עבורך</h1>
+        
+        <% if (message) { %>
+            <p class="info-message"><%= message %></p>
+        <% } %>
+
+        <div class="movies-grid">
+            <% recommendations.forEach(movie => { %>
+                <div class="movie-card">
+                    <div class="movie-image">
+                        <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+                    </div>
+                    <div class="movie-info">
+                        <h3><%= movie.title %></h3>
+                        <p><%= movie.overview %></p>
+                        <a href="/video/movie/<%= movie.id %>" class="btn">📽️ פרטים נוספים</a>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
